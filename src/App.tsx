@@ -3,13 +3,14 @@ import { Calculator } from './components/Calculator';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ChevronRight, Home } from 'lucide-react';
+import { Routes, Route } from 'react-router-dom';
 
 const Breadcrumbs: React.FC = () => (
   <nav 
     aria-label="Breadcrumb navigation" 
-    className="w-full bg-pink/20 py-3 px-4 text-sm text-dark flex justify-center shadow-sm border-b border-pink/30"
+    className="w-full bg-gradient-to-r from-gray-50 to-gray-100 py-3 px-4 text-sm text-dark border-b border-gray-200"
   >
-    <div className="container mx-auto max-w-6xl">
+    <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
       <ol 
         className="flex items-center space-x-1 text-sm"
         itemScope 
@@ -56,6 +57,12 @@ const Breadcrumbs: React.FC = () => (
     </div>
   </nav>
 );
+
+// Placeholder pages - updated with better layout
+const ProductsPage = () => <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-8"><h1 className="text-3xl font-bold mb-4">Helium Products</h1><p className="text-lg text-gray-600">Browse our range of helium cylinders and accessories. (Coming soon)</p></div>;
+const DeliveryPage = () => <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-8"><h1 className="text-3xl font-bold mb-4">Delivery Information</h1><p className="text-lg text-gray-600">Learn about our UK-wide delivery options and times. (Coming soon)</p></div>;
+const TipsPage = () => <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-8"><h1 className="text-3xl font-bold mb-4">Help & Tips</h1><p className="text-lg text-gray-600">Get expert advice on using helium, balloon float times, and more. (Coming soon)</p></div>;
+const ContactPage = () => <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-8"><h1 className="text-3xl font-bold mb-4">Contact Us</h1><p className="text-lg text-gray-600">Contact our team for support or questions. (Coming soon)</p></div>;
 
 // Add error boundary for better UX
 interface ErrorBoundaryProps {
@@ -122,7 +129,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 function App() {
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-beige font-sans flex flex-col">
+      <div className="min-h-screen bg-gradient-to-b from-beige to-white font-sans flex flex-col">
         {/* Skip to main content for accessibility */}
         <a 
           href="#main-content" 
@@ -136,10 +143,16 @@ function App() {
         
         <main 
           id="main-content"
-          className="flex-1 container mx-auto px-4 py-8"
+          className="flex-1 w-full"
           role="main"
         >
-          <Calculator />
+          <Routes>
+            <Route path="/" element={<Calculator />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/delivery" element={<DeliveryPage />} />
+            <Route path="/tips" element={<TipsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
         </main>
         
         <Footer />

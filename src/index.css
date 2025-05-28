@@ -1,3 +1,296 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom CSS for Helium4U Calculator */
+
+@layer base {
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Better focus outline for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-orange;
+  }
+
+  /* Remove default button focus styles */
+  button:focus {
+    outline: none;
+  }
+
+  /* Custom selection color */
+  ::selection {
+    @apply bg-orange/20 text-orange;
+  }
+
+  /* Smooth transitions for reduced motion users */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Screen reader only class */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .sr-only.focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Loading spinner */
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #FF6B35;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-orange to-pink text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-white border-2 border-orange text-orange font-bold py-3 px-6 rounded-lg hover:bg-orange hover:text-white transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply text-orange font-semibold hover:bg-orange/10 py-2 px-4 rounded-lg transition-all duration-200;
+  }
+
+  /* Custom card styles */
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300;
+  }
+
+  .card-gradient {
+    @apply bg-gradient-to-br from-orange to-pink text-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300;
+  }
+
+  /* Form input styles */
+  .input-primary {
+    @apply w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange focus:ring-4 focus:ring-orange/20 transition-all duration-200 font-medium;
+  }
+
+  /* Trust indicator animation */
+  .trust-pulse {
+    animation: trust-pulse 2s infinite;
+  }
+
+  @keyframes trust-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  /* Mobile menu slide animation */
+  .mobile-menu-enter {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .mobile-menu-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 300ms ease-out, opacity 300ms ease-out;
+  }
+
+  .mobile-menu-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .mobile-menu-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 300ms ease-in, opacity 300ms ease-in;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #FF6B35, #F7B32B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Floating action button */
+  .fab {
+    @apply fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-orange to-pink text-white rounded-full shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 flex items-center justify-center z-40;
+  }
+
+  /* Notification badge */
+  .notification-badge {
+    @apply absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply w-full bg-gray-200 rounded-full h-2 overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-orange to-pink transition-all duration-500 ease-out;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    @apply absolute z-50 px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-lg opacity-0 invisible transition-all duration-200;
+  }
+
+  .tooltip.show {
+    @apply opacity-100 visible;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-orange rounded-full hover:bg-orange/80;
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    @apply bg-gray-200 rounded animate-pulse;
+  }
+
+  .skeleton-text {
+    @apply h-4 bg-gray-200 rounded animate-pulse mb-2;
+  }
+
+  /* Error state */
+  .error-state {
+    @apply bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg;
+  }
+
+  /* Success state */
+  .success-state {
+    @apply bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg;
+  }
+
+  /* Warning state */
+  .warning-state {
+    @apply bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-lg;
+  }
+
+  /* Info state */
+  .info-state {
+    @apply bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg;
+  }
+}
+
+@layer utilities {
+  /* Safe area insets for mobile devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text gradient utilities */
+  .text-gradient-orange {
+    background: linear-gradient(135deg, #FF6B35, #F7B32B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-pink {
+    background: linear-gradient(135deg, #F7B32B, #FF6B35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Transform utilities */
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    .print-only {
+      display: block !important;
+    }
+  }
+}
+
+/* Dark mode support (optional future enhancement) */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    /* Dark mode styles would go here */
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .high-contrast {
+    /* High contrast styles would go here */
+  }
+}
