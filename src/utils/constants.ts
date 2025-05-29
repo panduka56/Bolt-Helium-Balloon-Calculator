@@ -85,12 +85,13 @@ export const cylinderTypes: CylinderType[] = [
     capacity: 150,
     imageUrl:
       "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png",
-    price: 253.76,
+    price: 253.76 - 55.0,
     buyUrl:
       "https://www.bottlegases.co.uk/product/9-4l-refillable-helium-tank/",
     cubicMeters: 1.2,
     liters: 9.4,
     productType: "refillable",
+    depositNote: "£55.00 refundable deposit",
   },
   {
     id: "ADAMS2LHELIU",
@@ -99,11 +100,12 @@ export const cylinderTypes: CylinderType[] = [
     capacity: 32,
     imageUrl:
       "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png",
-    price: 87.77,
+    price: 87.77 - 25.0,
     buyUrl: "https://www.bottlegases.co.uk/product/2l-refillable-helium-tank/",
     cubicMeters: 0.42,
     liters: 2,
     productType: "refillable",
+    depositNote: "simply pay a refundable deposit of £25.00",
   },
   {
     id: "ADAMS20LHELIU",
@@ -112,11 +114,12 @@ export const cylinderTypes: CylinderType[] = [
     capacity: 320,
     imageUrl:
       "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png",
-    price: 453.7,
+    price: 453.7 - 80.0,
     buyUrl: "https://www.bottlegases.co.uk/product/20l-refillable-helium-tank/",
     cubicMeters: 4,
     liters: 20,
     productType: "refillable",
+    depositNote: "£80.00 refundable deposit",
   },
   {
     id: "ADAMS50LHELIU",
@@ -125,7 +128,7 @@ export const cylinderTypes: CylinderType[] = [
     capacity: 800,
     imageUrl:
       "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png",
-    price: 655.04,
+    price: 624.05,
     buyUrl:
       "https://www.adamsgas.co.uk/product/50l-refillable-helium-gas-cylinder-trade-only/",
     cubicMeters: 10,

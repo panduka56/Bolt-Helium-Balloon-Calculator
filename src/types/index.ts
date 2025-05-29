@@ -26,4 +26,5 @@ export interface CylinderType {
   cubicMeters?: number;
   liters?: number;
   productType?: "disposable" | "refillable" | "inflator";
+  depositNote?: string;
 }
