@@ -1,5 +1,5 @@
 import React from "react";
-import { ShoppingCart, HelpCircle } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 
 interface CalculationResultsProps {
   totalHelium: {
@@ -40,10 +40,6 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
 }) => {
   const hasRecommendations =
     recommendedCylinders.length > 0 && totalHelium.cubicFeet > 0;
-  const totalCost = recommendedCylinders.reduce(
-    (sum, cylinder) => sum + cylinder.price * cylinder.quantity,
-    0,
-  );
 
   if (totalHelium.cubicFeet <= 0) {
     return (
@@ -142,18 +138,8 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
                 </div>
               ))}
             </div>
-            <div className="mt-6 p-4 bg-pink rounded-xl border border-pink-200 flex items-start w-full">
-              <HelpCircle className="h-5 w-5 text-orange mr-3 flex-shrink-0 mt-1" />
-              <div className="text-sm text-dark">
-                <p className="font-bold mb-1">Why these cylinders?</p>
-                <p>
-                  We recommend the most efficient combination of cylinders based
-                  on your helium needs, balancing cost and convenience.
-                </p>
-                <div className="mt-2 font-semibold text-orange">
-                  Estimated Cost: £{totalCost.toFixed(2)}
-                </div>
-              </div>
+            <div className="mt-6 p-4 bg-pink rounded-xl border border-pink-200 text-sm text-dark text-center">
+              These are our suggestions. For the most up-to-date product info and prices, please visit the supplier's website.
             </div>
           </div>
         )}
@@ -243,18 +229,8 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
                 </div>
               ))}
             </div>
-            <div className="mt-6 p-4 bg-pink rounded-xl border border-pink-200 flex items-start w-full">
-              <HelpCircle className="h-5 w-5 text-orange mr-3 flex-shrink-0 mt-1" />
-              <div className="text-sm text-dark">
-                <p className="font-bold mb-1">Why these cylinders?</p>
-                <p>
-                  We recommend the most efficient combination of cylinders based
-                  on your helium needs, balancing cost and convenience.
-                </p>
-                <div className="mt-2 font-semibold text-orange">
-                  Estimated Cost: £{totalCost.toFixed(2)}
-                </div>
-              </div>
+            <div className="mt-6 p-4 bg-pink rounded-xl border border-pink-200 text-sm text-dark text-center">
+              These are our suggestions. For the most up-to-date product info and prices, please visit the supplier's website.
             </div>
           </div>
         )}

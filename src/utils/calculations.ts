@@ -42,13 +42,23 @@ export const recommendCylinders = (cubicMeters: number) => {
       return a.cubicMeters! - b.cubicMeters!;
     });
 
-  // 1. Single cylinder option (if any can cover the need)
-  const singleCylinder = availableCylinders.find(c => c.cubicMeters! >= cubicMeters);
-  if (singleCylinder) {
-    return [{ ...singleCylinder, quantity: 1 }];
+  // 1. Single disposable cylinder option (if any can cover the need)
+  const singleDisposable = availableCylinders.find(
+    c => c.productType === "disposable" && c.cubicMeters! >= cubicMeters
+  );
+  if (singleDisposable) {
+    return [{ ...singleDisposable, quantity: 1 }];
   }
 
-  // 2. DP for minimum number of cylinders (and lowest cost if tied)
+  // 2. Single refillable cylinder option (if any can cover the need)
+  const singleRefillable = availableCylinders.find(
+    c => c.productType === "refillable" && c.cubicMeters! >= cubicMeters
+  );
+  if (singleRefillable) {
+    return [{ ...singleRefillable, quantity: 1 }];
+  }
+
+  // 3. DP for minimum number of cylinders (and lowest cost if tied)
   // Discretize to liters to avoid floating point issues
   const litersNeeded = Math.ceil(cubicMeters * 1000);
   const cylinderLiters = availableCylinders.map(c => Math.round(c.cubicMeters! * 1000));
