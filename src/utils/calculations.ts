@@ -28,44 +28,67 @@ export const recommendCylinders = (cubicMeters: number) => {
   if (cubicMeters <= 0) return [];
 
   type RecommendedCylinder = CylinderType & { quantity: number };
-  
-  // Filter and sort cylinders by capacity
+
+  // Filter out inflators and cylinders with no cubicMeters
   const disposables = cylinderTypes
-    .filter((c) => c.productType === "disposable")
-    .sort((a, b) => a.cubicMeters - b.cubicMeters);
+    .filter((c) => c.productType === "disposable" && c.cubicMeters && c.cubicMeters > 0)
+    .sort((a, b) => (a.cubicMeters! - b.cubicMeters!));
   const refillables = cylinderTypes
-    .filter((c) => c.productType === "refillable")
-    .sort((a, b) => a.cubicMeters - b.cubicMeters);
+    .filter((c) => c.productType === "refillable" && c.cubicMeters && c.cubicMeters > 0)
+    .sort((a, b) => (a.cubicMeters! - b.cubicMeters!));
+
+  // Try to find a single smallest cylinder that fits (prefer disposables)
   const allCylinders = [...disposables, ...refillables];
-
-  // Strategy 1: Try to find smallest single cylinder that fits
-  const smallestThatFits = allCylinders.find(
-    (c) => c.cubicMeters >= cubicMeters
-  );
-  if (smallestThatFits) {
-    return [{ ...smallestThatFits, quantity: 1 }];
+  const singleCylinder = allCylinders.find((c) => c.cubicMeters! >= cubicMeters);
+  if (singleCylinder) {
+    return [{ ...singleCylinder, quantity: 1 }];
   }
 
-  // Strategy 2: Use combination of larger cylinders (largest first to minimize waste)
-  let remainingCubicMeters = cubicMeters;
+  // Greedy approach: use as many of the largest disposable as possible, then fill with smaller disposables, then refillables
+  let remaining = cubicMeters;
   const result: RecommendedCylinder[] = [];
-  
-  for (const cylinder of allCylinders.slice().reverse()) { // largest to smallest
-    if (remainingCubicMeters <= 0) break;
-    const quantity = Math.floor(remainingCubicMeters / cylinder.cubicMeters);
-    if (quantity > 0) {
-      result.push({ ...cylinder, quantity });
-      remainingCubicMeters -= quantity * cylinder.cubicMeters;
+
+  // Use disposables first (largest to smallest)
+  for (let i = disposables.length - 1; i >= 0; i--) {
+    const cyl = disposables[i];
+    const qty = Math.floor(remaining / cyl.cubicMeters!);
+    if (qty > 0) {
+      result.push({ ...cyl, quantity: qty });
+      remaining -= qty * cyl.cubicMeters!;
     }
   }
-  
-  // Handle any remainder with the smallest cylinder that fits
-  if (remainingCubicMeters > 0) {
-    const smallest = allCylinders.find((c) => c.cubicMeters >= remainingCubicMeters);
-    if (smallest) {
-      result.push({ ...smallest, quantity: 1 });
+
+  // If there's still a remainder, use the smallest disposable that fits
+  if (remaining > 0.0001) {
+    const smallestDisposable = disposables.find((c) => c.cubicMeters! >= remaining);
+    if (smallestDisposable) {
+      result.push({ ...smallestDisposable, quantity: 1 });
+      remaining -= smallestDisposable.cubicMeters!;
     }
   }
-  
-  return result;
+
+  // If there's still a remainder, use refillables (smallest that fits)
+  if (remaining > 0.0001) {
+    const smallestRefillable = refillables.find((c) => c.cubicMeters! >= remaining);
+    if (smallestRefillable) {
+      result.push({ ...smallestRefillable, quantity: 1 });
+      remaining -= smallestRefillable.cubicMeters!;
+    }
+  }
+
+  // If still not covered, fallback to the largest available cylinder
+  if (result.length === 0 && allCylinders.length > 0) {
+    return [{ ...allCylinders[0], quantity: 1 }];
+  }
+
+  // Merge same cylinder types (if any)
+  const merged: { [id: string]: RecommendedCylinder } = {};
+  for (const cyl of result) {
+    if (merged[cyl.id]) {
+      merged[cyl.id].quantity += cyl.quantity;
+    } else {
+      merged[cyl.id] = { ...cyl };
+    }
+  }
+  return Object.values(merged).filter((c) => c.quantity > 0);
 };
