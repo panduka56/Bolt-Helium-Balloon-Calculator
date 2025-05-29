@@ -32,22 +32,45 @@ export const recommendCylinders = (cubicMeters: number) => {
   // Filter cylinders that have actual volume data and are not inflators
   const availableCylinders = cylinderTypes
     .filter(c => c.productType !== "inflator" && c.cubicMeters && c.cubicMeters > 0)
-    .sort((a, b) => a.cubicMeters! - b.cubicMeters!);
+    .sort((a, b) => b.cubicMeters! - a.cubicMeters!); // largest to smallest
 
-  // Find the most cost-effective single cylinder type
-  let bestOption: RecommendedCylinder | null = null;
-  let bestCostPerM3 = Infinity;
+  // 1. Single cylinder option (if any can cover the need)
+  const singleCylinder = availableCylinders.find(c => c.cubicMeters! >= cubicMeters);
+  const singleCylinderOption = singleCylinder ? [{ ...singleCylinder, quantity: 1 }] : null;
 
-  for (const cylinder of availableCylinders) {
-    const quantityNeeded = Math.ceil(cubicMeters / cylinder.cubicMeters!);
-    const totalCost = quantityNeeded * cylinder.price;
-    const costPerM3 = totalCost / (quantityNeeded * cylinder.cubicMeters!);
-
-    if (costPerM3 < bestCostPerM3) {
-      bestCostPerM3 = costPerM3;
-      bestOption = { ...cylinder, quantity: quantityNeeded };
+  // 2. Greedy combination (largest to smallest)
+  let remaining = cubicMeters;
+  const combo: RecommendedCylinder[] = [];
+  for (const cyl of availableCylinders) {
+    const qty = Math.floor(remaining / cyl.cubicMeters!);
+    if (qty > 0) {
+      combo.push({ ...cyl, quantity: qty });
+      remaining -= qty * cyl.cubicMeters!;
     }
   }
+  // If there's still a remainder, use the smallest cylinder that fits
+  if (remaining > 0.0001) {
+    const smallest = availableCylinders[availableCylinders.length - 1];
+    combo.push({ ...smallest, quantity: 1 });
+  }
+  // Remove any with 0 quantity
+  const comboFiltered = combo.filter(c => c.quantity > 0);
 
-  return bestOption ? [bestOption] : [];
+  // 3. Choose best (lowest cost) option, but return both if both are possible
+  const options: RecommendedCylinder[][] = [];
+  if (singleCylinderOption) options.push(singleCylinderOption);
+  if (comboFiltered.length > 0 && (!singleCylinderOption || comboFiltered.length > 1 || comboFiltered[0].quantity > 1)) {
+    options.push(comboFiltered);
+  }
+  // If neither, fallback to smallest cylinder
+  if (options.length === 0 && availableCylinders.length > 0) {
+    options.push([{ ...availableCylinders[availableCylinders.length - 1], quantity: 1 }]);
+  }
+  // Return the best (lowest total cost) option first
+  options.sort((a, b) => {
+    const costA = a.reduce((sum, c) => sum + c.price * c.quantity, 0);
+    const costB = b.reduce((sum, c) => sum + c.price * c.quantity, 0);
+    return costA - costB;
+  });
+  return options[0]; // For now, return only the best option (array of cylinders)
 };
