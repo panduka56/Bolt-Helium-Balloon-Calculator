@@ -4,63 +4,63 @@ export const balloonSizes: BalloonSize[] = [
   {
     size: "5",
     name: '5"',
-    heliumCubicFeet: 0.016,
+    heliumCubicMeters: 0.0017, // Qualatex: 0.06 ft³
     description: "Mini balloon, not suitable for helium (air-fill only)",
     canFloatWithHelium: false,
   },
   {
     size: "9",
     name: '9"',
-    heliumCubicFeet: 0.25,
+    heliumCubicMeters: 0.007, // Qualatex: 0.25 ft³
     description: "Small latex balloon, floats with helium",
     canFloatWithHelium: true,
   },
   {
     size: "10",
     name: '10"',
-    heliumCubicFeet: 0.3,
+    heliumCubicMeters: 0.01, // Extrapolated: 0.35 ft³
     description: "Small/medium latex balloon, floats with helium",
     canFloatWithHelium: true,
   },
   {
     size: "11",
     name: '11"',
-    heliumCubicFeet: 0.5,
+    heliumCubicMeters: 0.015, // Qualatex: 0.5 ft³
     description: "Standard UK party balloon, floats with helium",
     canFloatWithHelium: true,
   },
   {
     size: "12",
     name: '12"',
-    heliumCubicFeet: 0.55,
+    heliumCubicMeters: 0.018, // Extrapolated: 0.65 ft³
     description: "Popular for events, floats with helium",
     canFloatWithHelium: true,
   },
   {
     size: "16",
     name: '16"',
-    heliumCubicFeet: 0.9,
+    heliumCubicMeters: 0.042, // Qualatex: 1.5 ft³
     description: "Large latex balloon, floats with helium",
     canFloatWithHelium: true,
   },
   {
     size: "18",
     name: '18"',
-    heliumCubicFeet: 1.1,
+    heliumCubicMeters: 0.056, // Qualatex: 2.0 ft³
     description: "Large latex or foil balloon, floats with helium",
     canFloatWithHelium: true,
   },
   {
     size: "24",
     name: '24"',
-    heliumCubicFeet: 3.0,
+    heliumCubicMeters: 0.142, // Qualatex: 5.0 ft³
     description: "Very large latex balloon, floats with helium",
     canFloatWithHelium: true,
   },
   {
     size: "36",
     name: '36" (3ft)',
-    heliumCubicFeet: 14.0,
+    heliumCubicMeters: 0.425, // Qualatex: 15.0 ft³
     description: "Jumbo latex balloon, floats with helium",
     canFloatWithHelium: true,
   },
@@ -194,7 +194,3 @@ export const cylinderTypes: CylinderType[] = [
     productType: "inflator",
   },
 ];
-
-// Conversion constants
-export const CUBIC_FEET_TO_LITERS = 28.3168;
-export const CUBIC_FEET_TO_CUBIC_METERS = 0.0283168;

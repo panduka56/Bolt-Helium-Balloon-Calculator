@@ -2,71 +2,70 @@ import { BalloonSet, CylinderType } from "../types";
 import { cylinderTypes } from "./constants";
 
 export const calculateTotalHelium = (balloonSets: BalloonSet[]) => {
-  const totalCubicFeet = balloonSets.reduce((total, set) => {
-    const setCubicFeet = set.balloons.reduce((setTotal, balloon) => {
-      return setTotal + balloon.quantity * balloon.heliumCubicFeet;
+  // Calculate total helium needed in cubic meters
+  const totalCubicMeters = balloonSets.reduce((total, set) => {
+    const setCubicMeters = set.balloons.reduce((setTotal, balloon) => {
+      return setTotal + balloon.quantity * balloon.heliumCubicMeters;
     }, 0);
-    return total + setCubicFeet;
+    return total + setCubicMeters;
   }, 0);
 
-  // Add a small buffer for wastage (5%)
-  const withBuffer = totalCubicFeet * 1.05;
-
-  // Correct conversions
-  // 1 ft³ = 28.3168 liters
-  // 1 m³ = 35.3147 ft³
-  // 1 m³ = 1000 liters
-  const liters = withBuffer * 28.3168;
-  const cubicMeters = withBuffer / 35.3147;
+  // Add 5% buffer for wastage
+  const withBuffer = totalCubicMeters * 1.05;
+  
+  // Convert to other units for display purposes
+  const liters = withBuffer * 1000; // 1 m³ = 1000 L
+  const cubicFeet = withBuffer * 35.3147; // 1 m³ = 35.3147 ft³
 
   return {
-    cubicFeet: withBuffer,
+    cubicMeters: withBuffer,
     liters,
-    cubicMeters,
+    cubicFeet,
   };
 };
 
-export const recommendCylinders = (cubicFeet: number) => {
-  if (cubicFeet <= 0) return [];
-
-  // Convert cubic feet to number of 9" balloons (assuming average balloon)
-  const totalBalloons = Math.ceil(cubicFeet / 0.25); // 0.25 cubic feet per 9" balloon
+export const recommendCylinders = (cubicMeters: number) => {
+  if (cubicMeters <= 0) return [];
 
   type RecommendedCylinder = CylinderType & { quantity: number };
+  
+  // Filter and sort cylinders by capacity
   const disposables = cylinderTypes
     .filter((c) => c.productType === "disposable")
-    .sort((a, b) => a.capacity - b.capacity);
+    .sort((a, b) => a.cubicMeters - b.cubicMeters);
   const refillables = cylinderTypes
     .filter((c) => c.productType === "refillable")
-    .sort((a, b) => a.capacity - b.capacity);
+    .sort((a, b) => a.cubicMeters - b.cubicMeters);
   const allCylinders = [...disposables, ...refillables];
 
-  // 1. If total balloons needed <= max disposable capacity, recommend the smallest single disposable that fits
-  const smallestDisposable = disposables.find(
-    (c) => c.capacity >= totalBalloons,
+  // Strategy 1: Try to find smallest single cylinder that fits
+  const smallestThatFits = allCylinders.find(
+    (c) => c.cubicMeters >= cubicMeters
   );
-  if (smallestDisposable) {
-    return [{ ...smallestDisposable, quantity: 1 }];
+  if (smallestThatFits) {
+    return [{ ...smallestThatFits, quantity: 1 }];
   }
 
-  // 2. If not, use a minimal combination of larger cylinders (disposables first, then refillables)
-  let remainingBalloons = totalBalloons;
+  // Strategy 2: Use combination of larger cylinders (largest first to minimize waste)
+  let remainingCubicMeters = cubicMeters;
   const result: RecommendedCylinder[] = [];
-  for (const cylinder of allCylinders.slice().reverse()) {
-    // largest to smallest
-    if (remainingBalloons <= 0) break;
-    const quantity = Math.floor(remainingBalloons / cylinder.capacity);
+  
+  for (const cylinder of allCylinders.slice().reverse()) { // largest to smallest
+    if (remainingCubicMeters <= 0) break;
+    const quantity = Math.floor(remainingCubicMeters / cylinder.cubicMeters);
     if (quantity > 0) {
       result.push({ ...cylinder, quantity });
-      remainingBalloons -= quantity * cylinder.capacity;
+      remainingCubicMeters -= quantity * cylinder.cubicMeters;
     }
   }
-  // If any left, add the smallest that fits
-  if (remainingBalloons > 0) {
-    const smallest = allCylinders.find((c) => c.capacity >= remainingBalloons);
+  
+  // Handle any remainder with the smallest cylinder that fits
+  if (remainingCubicMeters > 0) {
+    const smallest = allCylinders.find((c) => c.cubicMeters >= remainingCubicMeters);
     if (smallest) {
       result.push({ ...smallest, quantity: 1 });
     }
   }
+  
   return result;
 };

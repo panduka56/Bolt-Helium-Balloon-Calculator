@@ -1,7 +1,7 @@
 export interface Balloon {
   size: string;
   quantity: number;
-  heliumCubicFeet: number;
+  heliumCubicMeters: number;
 }
 
 export interface BalloonSet {
@@ -12,9 +12,9 @@ export interface BalloonSet {
 export interface BalloonSize {
   size: string;
   name: string;
-  heliumCubicFeet: number;
-  description?: string;
-  canFloatWithHelium?: boolean;
+  heliumCubicMeters: number;
+  description: string;
+  canFloatWithHelium: boolean;
 }
 
 export interface CylinderType {

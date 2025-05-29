@@ -1,6 +1,5 @@
 import React from "react";
 import { ShoppingCart, HelpCircle } from "lucide-react";
-import { formatNumber } from "../utils/helpers";
 
 interface CalculationResultsProps {
   totalHelium: {
@@ -21,6 +20,18 @@ interface CalculationResultsProps {
   }>;
   layout?: "horizontal" | "vertical";
 }
+
+// Formatting helpers for cubic meters and liters
+const formatCubicMeters = (value: number): string => {
+  if (value < 0.001) return "0";
+  if (value < 0.01) return value.toFixed(4);
+  if (value < 0.1) return value.toFixed(3);
+  return value.toFixed(2);
+};
+const formatLiters = (value: number): string => {
+  if (value < 1) return value.toFixed(1);
+  return Math.round(value).toString();
+};
 
 export const CalculationResults: React.FC<CalculationResultsProps> = ({
   totalHelium,
@@ -60,11 +71,10 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
             Total Helium Required
           </div>
           <div className="text-5xl font-bold mt-2">
-            {formatNumber(totalHelium.cubicMeters)} m³
+            {formatCubicMeters(totalHelium.cubicMeters)} m³
           </div>
           <div className="text-base opacity-80">
-            ({formatNumber(totalHelium.liters)} liters /{" "}
-            {formatNumber(totalHelium.cubicFeet)} ft³)
+            ({formatLiters(totalHelium.liters)} liters / {formatCubicMeters(totalHelium.cubicMeters)} m³)
           </div>
         </div>
         {/* Recommended Cylinders */}
@@ -159,11 +169,10 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
             Total Helium Required
           </div>
           <div className="text-5xl font-bold mt-2">
-            {formatNumber(totalHelium.cubicMeters)} m³
+            {formatCubicMeters(totalHelium.cubicMeters)} m³
           </div>
           <div className="text-base opacity-80">
-            ({formatNumber(totalHelium.liters)} liters /{" "}
-            {formatNumber(totalHelium.cubicFeet)} ft³)
+            ({formatLiters(totalHelium.liters)} liters / {formatCubicMeters(totalHelium.cubicMeters)} m³)
           </div>
         </div>
         {/* Recommended Cylinders */}

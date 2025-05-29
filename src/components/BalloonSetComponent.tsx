@@ -78,7 +78,7 @@ export const BalloonSetComponent: React.FC<BalloonSetComponentProps> = ({
                 updateBalloon({
                   size: sizeOption.size,
                   quantity: newQuantity,
-                  heliumCubicFeet: sizeOption.heliumCubicFeet,
+                  heliumCubicMeters: sizeOption.heliumCubicMeters,
                 })
               }
             />
