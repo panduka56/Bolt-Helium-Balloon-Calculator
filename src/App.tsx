@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Routes, Route } from "react-router-dom";
 import HeliumProducts from "./components/HeliumProducts";
+import NotFound from "./components/NotFound";
 
 const Breadcrumbs: React.FC = () => (
   <nav
@@ -491,6 +492,7 @@ function App() {
             <Route path="/delivery" element={<DeliveryPage />} />
             <Route path="/tips" element={<TipsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 
