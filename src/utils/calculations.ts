@@ -1,20 +1,24 @@
-import { BalloonSet } from '../types';
-import { cylinderTypes, CUBIC_FEET_TO_LITERS } from './constants';
+import { BalloonSet, CylinderType } from "../types";
+import { cylinderTypes, CUBIC_FEET_TO_LITERS } from "./constants";
 
 export const calculateTotalHelium = (balloonSets: BalloonSet[]) => {
   const totalCubicFeet = balloonSets.reduce((total, set) => {
     const setCubicFeet = set.balloons.reduce((setTotal, balloon) => {
-      return setTotal + (balloon.quantity * balloon.heliumCubicFeet);
+      return setTotal + balloon.quantity * balloon.heliumCubicFeet;
     }, 0);
     return total + setCubicFeet;
   }, 0);
 
   // Add a small buffer for wastage (5%)
   const withBuffer = totalCubicFeet * 1.05;
-  
+
+  const liters = withBuffer * CUBIC_FEET_TO_LITERS;
+  const cubicMeters = withBuffer * 0.0283168;
+
   return {
     cubicFeet: withBuffer,
-    liters: withBuffer * CUBIC_FEET_TO_LITERS
+    liters,
+    cubicMeters,
   };
 };
 
@@ -24,52 +28,41 @@ export const recommendCylinders = (cubicFeet: number) => {
   // Convert cubic feet to number of 9" balloons (assuming average balloon)
   const totalBalloons = Math.ceil(cubicFeet / 0.25); // 0.25 cubic feet per 9" balloon
 
-  const availableCylinders = [...cylinderTypes].sort((a, b) => b.capacity - a.capacity);
-  const result: any[] = [];
-  let remainingBalloons = totalBalloons;
+  type RecommendedCylinder = CylinderType & { quantity: number };
+  const disposables = cylinderTypes
+    .filter((c) => c.productType === "disposable")
+    .sort((a, b) => a.capacity - b.capacity);
+  const refillables = cylinderTypes
+    .filter((c) => c.productType === "refillable")
+    .sort((a, b) => a.capacity - b.capacity);
+  const allCylinders = [...disposables, ...refillables];
 
-  // First, try to use larger cylinders for most of the balloons
-  for (const cylinder of availableCylinders) {
+  // 1. If total balloons needed <= max disposable capacity, recommend the smallest single disposable that fits
+  const smallestDisposable = disposables.find(
+    (c) => c.capacity >= totalBalloons,
+  );
+  if (smallestDisposable) {
+    return [{ ...smallestDisposable, quantity: 1 }];
+  }
+
+  // 2. If not, use a minimal combination of larger cylinders (disposables first, then refillables)
+  let remainingBalloons = totalBalloons;
+  const result: RecommendedCylinder[] = [];
+  for (const cylinder of allCylinders.slice().reverse()) {
+    // largest to smallest
     if (remainingBalloons <= 0) break;
-    
     const quantity = Math.floor(remainingBalloons / cylinder.capacity);
     if (quantity > 0) {
-      result.push({
-        ...cylinder,
-        quantity
-      });
+      result.push({ ...cylinder, quantity });
       remainingBalloons -= quantity * cylinder.capacity;
     }
   }
-
-  // If we have remaining balloons, add one more of the most appropriate cylinder
+  // If any left, add the smallest that fits
   if (remainingBalloons > 0) {
-    const suitableCylinder = availableCylinders.find(c => c.capacity >= remainingBalloons);
-    
-    if (suitableCylinder) {
-      const existingCylinder = result.find(c => c.id === suitableCylinder.id);
-      if (existingCylinder) {
-        existingCylinder.quantity += 1;
-      } else {
-        result.push({
-          ...suitableCylinder,
-          quantity: 1
-        });
-      }
-    } else {
-      // If no cylinder is big enough, add the largest available
-      const largestCylinder = availableCylinders[0];
-      const existingCylinder = result.find(c => c.id === largestCylinder.id);
-      if (existingCylinder) {
-        existingCylinder.quantity += 1;
-      } else {
-        result.push({
-          ...largestCylinder,
-          quantity: 1
-        });
-      }
+    const smallest = allCylinders.find((c) => c.capacity >= remainingBalloons);
+    if (smallest) {
+      result.push({ ...smallest, quantity: 1 });
     }
   }
-
   return result;
 };

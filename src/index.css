@@ -63,7 +63,7 @@
   /* Loading spinner */
   .loading-spinner {
     border: 4px solid #f3f3f3;
-    border-top: 4px solid #FF6B35;
+    border-top: 4px solid #ff6b35;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -71,13 +71,17 @@
   }
 
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   /* Custom button styles */
   .btn-primary {
-    @apply bg-gradient-to-r from-orange to-pink text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200;
+    @apply bg-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-pink hover:text-white hover:scale-105 transition-all duration-200 border-2 border-orange;
   }
 
   .btn-secondary {
@@ -108,8 +112,13 @@
   }
 
   @keyframes trust-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
   }
 
   /* Mobile menu slide animation */
@@ -121,7 +130,9 @@
   .mobile-menu-enter-active {
     transform: translateX(0);
     opacity: 1;
-    transition: transform 300ms ease-out, opacity 300ms ease-out;
+    transition:
+      transform 300ms ease-out,
+      opacity 300ms ease-out;
   }
 
   .mobile-menu-exit {
@@ -132,12 +143,14 @@
   .mobile-menu-exit-active {
     transform: translateX(100%);
     opacity: 0;
-    transition: transform 300ms ease-in, opacity 300ms ease-in;
+    transition:
+      transform 300ms ease-in,
+      opacity 300ms ease-in;
   }
 
   /* Gradient text */
   .gradient-text {
-    background: linear-gradient(135deg, #FF6B35, #F7B32B);
+    background: linear-gradient(135deg, #ff6b35, #f7b32b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -244,25 +257,35 @@
 
   /* Text gradient utilities */
   .text-gradient-orange {
-    background: linear-gradient(135deg, #FF6B35, #F7B32B);
+    background: linear-gradient(135deg, #ff6b35, #f7b32b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-pink {
-    background: linear-gradient(135deg, #F7B32B, #FF6B35);
+    background: linear-gradient(135deg, #f7b32b, #ff6b35);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   /* Animation delays */
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+  .delay-500 {
+    animation-delay: 500ms;
+  }
 
   /* Transform utilities */
   .transform-gpu {
@@ -274,7 +297,7 @@
     .no-print {
       display: none !important;
     }
-    
+
     .print-only {
       display: block !important;
     }

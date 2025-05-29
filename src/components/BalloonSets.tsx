@@ -1,14 +1,17 @@
-import React from 'react';
-import { PlusCircle } from 'lucide-react';
-import { BalloonSetComponent } from './BalloonSetComponent';
-import { BalloonSet } from '../types';
+import React from "react";
+import { PlusCircle } from "lucide-react";
+import { BalloonSetComponent } from "./BalloonSetComponent";
+import { BalloonSet } from "../types";
 
 interface BalloonSetsProps {
   balloonSets: BalloonSet[];
   onChange: (balloonSets: BalloonSet[]) => void;
 }
 
-export const BalloonSets: React.FC<BalloonSetsProps> = ({ balloonSets, onChange }) => {
+export const BalloonSets: React.FC<BalloonSetsProps> = ({
+  balloonSets,
+  onChange,
+}) => {
   const addBalloonSet = () => {
     onChange([...balloonSets, { id: Date.now().toString(), balloons: [] }]);
   };

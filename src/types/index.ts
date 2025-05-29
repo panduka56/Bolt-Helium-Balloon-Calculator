@@ -23,4 +23,7 @@ export interface CylinderType {
   imageUrl: string;
   price: number;
   buyUrl: string;
+  cubicMeters?: number;
+  liters?: number;
+  productType?: "disposable" | "refillable" | "inflator";
 }
