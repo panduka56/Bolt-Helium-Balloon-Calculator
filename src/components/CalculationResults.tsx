@@ -17,6 +17,7 @@ interface CalculationResultsProps {
     imageUrl: string;
     price: number;
     buyUrl: string;
+    depositNote?: string;
   }>;
   layout?: "horizontal" | "vertical";
 }
@@ -98,6 +99,11 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
                     <div className="text-sm text-gray-600">
                       £{cylinder.price.toFixed(2)} each
                     </div>
+                    {cylinder.depositNote && (
+                      <div className="text-xs text-pink-700 font-semibold mt-1">
+                        {cylinder.depositNote}
+                      </div>
+                    )}
                     <a
                       href={cylinder.buyUrl}
                       target="_blank"
@@ -180,6 +186,11 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
                     <div className="text-sm text-gray-600">
                       £{cylinder.price.toFixed(2)} each
                     </div>
+                    {cylinder.depositNote && (
+                      <div className="text-xs text-pink-700 font-semibold mt-1">
+                        {cylinder.depositNote}
+                      </div>
+                    )}
                     <a
                       href={cylinder.buyUrl}
                       target="_blank"

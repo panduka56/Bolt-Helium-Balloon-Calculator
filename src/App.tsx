@@ -205,7 +205,7 @@ const DeliveryPage = () => {
               <button
                 className="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-dark focus:outline-none focus:ring-2 focus:ring-orange rounded-xl"
                 onClick={() => setFaqOpen(faqOpen === i ? null : i)}
-                aria-expanded={faqOpen === i}
+                aria-expanded={faqOpen === i ? 'true' : 'false'}
               >
                 {faq.question}
                 <ChevronRight
@@ -306,7 +306,7 @@ const TipsPage = () => {
               <button
                 className="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-dark focus:outline-none focus:ring-2 focus:ring-orange rounded-xl"
                 onClick={() => setFaqOpen(faqOpen === i ? null : i)}
-                aria-expanded={faqOpen === i}
+                aria-expanded={faqOpen === i ? 'true' : 'false'}
               >
                 {faq.question}
                 <ChevronRight
@@ -327,11 +327,77 @@ const TipsPage = () => {
 };
 
 const ContactPage = () => (
-  <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-8">
-    <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
-    <p className="text-lg text-gray-600">
-      Contact our team for support or questions. (Coming soon)
+  <div className="max-w-[800px] mx-auto px-4 py-12">
+    <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
+    <p className="mb-4 text-lg">
+      Have a question or need help? Reach out to our team and we'll get back to you as soon as possible.
     </p>
+    <div className="mb-8">
+      <div className="font-semibold">Adams Gas</div>
+      <div>Westwood Industrial Estate, Margate, Kent, CT9 4JJ</div>
+      <div>
+        Email: <a href="mailto:sales@adamsgas.co.uk" className="text-orange underline">sales@adamsgas.co.uk</a>
+      </div>
+      <div>
+        Phone: <a href="tel:01843220596" className="text-orange underline">01843 220 596</a> / <a href="tel:08001954445" className="text-orange underline">0800 195 4445</a>
+      </div>
+      <div className="mt-2">
+        <a href="https://www.facebook.com/BottleGasesUK/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Facebook</a>
+      </div>
+    </div>
+    <form className="space-y-4 max-w-lg">
+      <div>
+        <label htmlFor="name" className="block font-semibold mb-1">Your Name (required)</label>
+        <input id="name" name="name" type="text" required className="input-primary w-full" />
+      </div>
+      <div>
+        <label htmlFor="email" className="block font-semibold mb-1">Your Email (required)</label>
+        <input id="email" name="email" type="email" required className="input-primary w-full" />
+      </div>
+      <div>
+        <label htmlFor="subject" className="block font-semibold mb-1">Subject</label>
+        <input id="subject" name="subject" type="text" className="input-primary w-full" />
+      </div>
+      <div>
+        <label htmlFor="message" className="block font-semibold mb-1">Your Message</label>
+        <textarea id="message" name="message" rows={5} required className="input-primary w-full" />
+      </div>
+      <div className="flex items-center">
+        <input id="privacy" name="privacy" type="checkbox" required className="mr-2" />
+        <label htmlFor="privacy" className="text-sm">I have read and accepted the <a href="https://www.bottlegases.co.uk/privacy-policy/" className="underline text-orange" target="_blank" rel="noopener noreferrer">Privacy & Cookie Policy</a>.</label>
+      </div>
+      <button type="submit" className="btn-primary px-6 py-2 font-bold">Enquire now</button>
+    </form>
+    <div className="mt-4 text-xs text-gray-500">
+      By submitting this form you agree to our <a href="https://www.bottlegases.co.uk/privacy-policy/" className="underline">Privacy & Cookie Policy</a>.
+    </div>
+    <div className="mt-8">
+      <h2 className="text-2xl font-bold mb-2">Useful Links</h2>
+      <ul className="list-disc pl-5 space-y-1 text-orange">
+        <li><a href="https://www.bottlegases.co.uk/" target="_blank" rel="noopener noreferrer">Home</a></li>
+        <li><a href="https://www.bottlegases.co.uk/shop/" target="_blank" rel="noopener noreferrer">Products</a></li>
+        <li><a href="https://www.bottlegases.co.uk/our-gases/" target="_blank" rel="noopener noreferrer">Our Gases</a></li>
+        <li><a href="https://www.bottlegases.co.uk/blog/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+        <li><a href="https://www.bottlegases.co.uk/contact-us/" target="_blank" rel="noopener noreferrer">Contact Us</a></li>
+        <li><a href="https://www.bottlegases.co.uk/delivery-information/" target="_blank" rel="noopener noreferrer">Delivery Information</a></li>
+        <li><a href="https://www.bottlegases.co.uk/manufacturers-parts/" target="_blank" rel="noopener noreferrer">Manufacturers Parts</a></li>
+        <li><a href="https://www.bottlegases.co.uk/my-account/" target="_blank" rel="noopener noreferrer">My Account</a></li>
+        <li><a href="https://www.bottlegases.co.uk/cart/" target="_blank" rel="noopener noreferrer">Cart</a></li>
+        <li><a href="https://www.bottlegases.co.uk/adams-gas-terms-and-conditions/" target="_blank" rel="noopener noreferrer">Terms and Conditions</a></li>
+        <li><a href="https://www.bottlegases.co.uk/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div className="mt-8">
+      <h2 className="text-2xl font-bold mb-2">Helium & Gas Knowledge</h2>
+      <ul className="list-disc pl-5 space-y-1 text-orange">
+        <li><a href="https://www.bottlegases.co.uk/helium-gas-for-events/" target="_blank" rel="noopener noreferrer">Helium Gas for Events</a></li>
+        <li><a href="https://www.bottlegases.co.uk/how-to-use-helium-gas/" target="_blank" rel="noopener noreferrer">How to Use Helium Gas</a></li>
+        <li><a href="https://www.bottlegases.co.uk/creating-the-perfect-christmas-party-with-helium-balloons/" target="_blank" rel="noopener noreferrer">Creating the Perfect Christmas Party with Helium Balloons</a></li>
+        <li><a href="https://www.bottlegases.co.uk/beyond-balloon-arches-helium-event-decor/" target="_blank" rel="noopener noreferrer">Beyond Balloon Arches: Helium Event Decor</a></li>
+        <li><a href="https://www.bottlegases.co.uk/inflating-the-future-helium-and-the-space-industry/" target="_blank" rel="noopener noreferrer">Inflating the Future: Helium and the Space Industry</a></li>
+        <li><a href="https://www.bottlegases.co.uk/which-gas-is-used-in-hot-air-balloons/" target="_blank" rel="noopener noreferrer">Which Gas is Used in Hot Air Balloons?</a></li>
+      </ul>
+    </div>
   </div>
 );
 
