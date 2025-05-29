@@ -105,9 +105,12 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
                       <div className="text-sm text-gray-400 italic mb-1">
                         Capacity: {cylinder.capacity} x 9" latex balloons
                       </div>
-                      <div className="text-sm font-medium text-orange mb-2">
-                        Quantity: {cylinder.quantity}
-                      </div>
+                      {/* Only show quantity if more than 1 */}
+                      {cylinder.quantity > 1 && (
+                        <div className="text-sm font-medium text-orange mb-2">
+                          Quantity: {cylinder.quantity}
+                        </div>
+                      )}
                       <div className="mt-2 mb-2">
                         <div className="text-lg text-dark font-bold">
                           £{cylinder.price.toFixed(2)} each
@@ -203,9 +206,12 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
                       <div className="text-sm text-gray-400 italic mb-1">
                         Capacity: {cylinder.capacity} x 9" latex balloons
                       </div>
-                      <div className="text-sm font-medium text-orange mb-2">
-                        Quantity: {cylinder.quantity}
-                      </div>
+                      {/* Only show quantity if more than 1 */}
+                      {cylinder.quantity > 1 && (
+                        <div className="text-sm font-medium text-orange mb-2">
+                          Quantity: {cylinder.quantity}
+                        </div>
+                      )}
                       <div className="mt-2 mb-2">
                         <div className="text-lg text-dark font-bold">
                           £{cylinder.price.toFixed(2)} each
