@@ -69,7 +69,7 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
         </div>
         {/* Recommended Cylinders */}
         {hasRecommendations && (
-          <div className="bg-white rounded-2xl p-8 border border-pink shadow-lg flex flex-col min-h-[220px] w-full max-h-[500px] overflow-auto">
+          <div className="bg-white rounded-2xl p-8 border border-pink shadow-lg flex flex-col min-h-[220px] w-full">
             <h4 className="font-bold text-dark mb-4 text-lg">
               Recommended Cylinders
             </h4>
@@ -77,40 +77,52 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
               {recommendedCylinders.map((cylinder, index) => (
                 <div
                   key={index}
-                  className="bg-pink/40 p-4 rounded-xl border border-pink flex items-start w-full min-w-0"
+                  className="bg-pink/40 p-4 rounded-xl border border-pink flex flex-col sm:flex-row items-start w-full min-w-0 gap-4"
                 >
-                  <div className="flex-shrink-0 w-20 h-20 bg-pink rounded-lg mr-4 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-20 h-20 bg-pink rounded-lg flex items-center justify-center mx-auto sm:mx-0">
                     <img
                       src={cylinder.imageUrl}
                       alt={cylinder.name}
                       className="w-full h-full object-contain rounded-lg"
+                      style={{ maxWidth: 80, maxHeight: 80 }}
                     />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-dark truncate">
-                      {cylinder.name}
-                    </div>
-                    <div className="text-sm text-gray-500 truncate">
-                      Capacity: {cylinder.capacity} balloons
-                    </div>
-                    <div className="text-sm font-medium text-orange">
-                      Quantity: {cylinder.quantity}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      £{cylinder.price.toFixed(2)} each
-                    </div>
-                    {cylinder.depositNote && (
-                      <div className="text-xs text-pink-700 font-semibold mt-1">
-                        {cylinder.depositNote}
+                  <div className="flex-1 min-w-0 flex flex-col justify-between">
+                    <div>
+                      <div className="font-semibold text-dark mb-1">
+                        {cylinder.name}
                       </div>
-                    )}
+                      <div className="text-sm text-gray-400 italic mb-1">
+                        Capacity: {cylinder.capacity} x 9" latex balloons
+                      </div>
+                      <div className="text-sm font-medium text-orange mb-2">
+                        Quantity: {cylinder.quantity}
+                      </div>
+                      <div className="mt-2 mb-2">
+                        <div className="text-lg text-dark font-bold">
+                          £{cylinder.price.toFixed(2)} each
+                        </div>
+                        {cylinder.depositNote && (
+                          <div className="text-xs font-semibold mt-1">
+                            {cylinder.depositNote.startsWith('simply pay a refundable deposit of') ? (
+                              <>Plus <span className="text-orange font-bold">{cylinder.depositNote.replace('simply pay a refundable deposit of ', '')}</span> refundable deposit</>
+                            ) : (
+                              <span className="text-pink-700">{cylinder.depositNote}</span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <hr className="my-3 border-pink-200" />
                     <a
                       href={cylinder.buyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-2 inline-flex items-center text-sm btn-primary px-4 py-1.5 rounded-lg font-bold"
+                      className="w-full flex items-center justify-center gap-2 bg-orange text-white px-5 py-2.5 rounded-lg font-bold shadow-lg border-2 border-orange hover:bg-pink hover:text-white hover:scale-105 transition-all duration-200 text-base mt-2"
+                      style={{ minHeight: 44 }}
+                      aria-label={`Buy ${cylinder.name}`}
                     >
-                      <ShoppingCart className="h-4 w-4 mr-1" />
+                      <ShoppingCart className="h-5 w-5" />
                       Buy Now
                     </a>
                   </div>
@@ -156,7 +168,7 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
         </div>
         {/* Recommended Cylinders */}
         {hasRecommendations && (
-          <div className="flex-1 bg-white rounded-2xl p-8 border border-pink shadow-lg flex flex-col min-h-[220px] w-full max-h-[500px] overflow-auto">
+          <div className="flex-1 bg-white rounded-2xl p-8 border border-pink shadow-lg flex flex-col min-h-[220px] w-full">
             <h4 className="font-bold text-dark mb-4 text-lg">
               Recommended Cylinders
             </h4>
@@ -164,40 +176,52 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
               {recommendedCylinders.map((cylinder, index) => (
                 <div
                   key={index}
-                  className="bg-pink/40 p-4 rounded-xl border border-pink flex items-start w-full min-w-0"
+                  className="bg-pink/40 p-4 rounded-xl border border-pink flex flex-col sm:flex-row items-start w-full min-w-0 gap-4"
                 >
-                  <div className="flex-shrink-0 w-20 h-20 bg-pink rounded-lg mr-4 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-20 h-20 bg-pink rounded-lg flex items-center justify-center mx-auto sm:mx-0">
                     <img
                       src={cylinder.imageUrl}
                       alt={cylinder.name}
                       className="w-full h-full object-contain rounded-lg"
+                      style={{ maxWidth: 80, maxHeight: 80 }}
                     />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-dark truncate">
-                      {cylinder.name}
-                    </div>
-                    <div className="text-sm text-gray-500 truncate">
-                      Capacity: {cylinder.capacity} balloons
-                    </div>
-                    <div className="text-sm font-medium text-orange">
-                      Quantity: {cylinder.quantity}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      £{cylinder.price.toFixed(2)} each
-                    </div>
-                    {cylinder.depositNote && (
-                      <div className="text-xs text-pink-700 font-semibold mt-1">
-                        {cylinder.depositNote}
+                  <div className="flex-1 min-w-0 flex flex-col justify-between">
+                    <div>
+                      <div className="font-semibold text-dark mb-1">
+                        {cylinder.name}
                       </div>
-                    )}
+                      <div className="text-sm text-gray-400 italic mb-1">
+                        Capacity: {cylinder.capacity} x 9" latex balloons
+                      </div>
+                      <div className="text-sm font-medium text-orange mb-2">
+                        Quantity: {cylinder.quantity}
+                      </div>
+                      <div className="mt-2 mb-2">
+                        <div className="text-lg text-dark font-bold">
+                          £{cylinder.price.toFixed(2)} each
+                        </div>
+                        {cylinder.depositNote && (
+                          <div className="text-xs font-semibold mt-1">
+                            {cylinder.depositNote.startsWith('simply pay a refundable deposit of') ? (
+                              <>Plus <span className="text-orange font-bold">{cylinder.depositNote.replace('simply pay a refundable deposit of ', '')}</span> refundable deposit</>
+                            ) : (
+                              <span className="text-pink-700">{cylinder.depositNote}</span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <hr className="my-3 border-pink-200" />
                     <a
                       href={cylinder.buyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-2 inline-flex items-center text-sm btn-primary px-4 py-1.5 rounded-lg font-bold"
+                      className="w-full flex items-center justify-center gap-2 bg-orange text-white px-5 py-2.5 rounded-lg font-bold shadow-lg border-2 border-orange hover:bg-pink hover:text-white hover:scale-105 transition-all duration-200 text-base mt-2"
+                      style={{ minHeight: 44 }}
+                      aria-label={`Buy ${cylinder.name}`}
                     >
-                      <ShoppingCart className="h-4 w-4 mr-1" />
+                      <ShoppingCart className="h-5 w-5" />
                       Buy Now
                     </a>
                   </div>
