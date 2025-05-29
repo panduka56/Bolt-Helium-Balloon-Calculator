@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const QUICK_LINKS = [
   { name: "Helium Calculator", href: "/" },
@@ -6,6 +7,7 @@ const QUICK_LINKS = [
   { name: "Delivery Information", href: "/delivery" },
   { name: "Balloon Tips & Guides", href: "/tips" },
   { name: "Safety Information", href: "/tips#safety" },
+  { name: "Contact", href: "/contact" },
   {
     name: "Terms & Conditions",
     href: "https://www.bottlegases.co.uk/terms-and-conditions/",
@@ -74,12 +76,12 @@ export const Footer: React.FC = () => {
             <p className="text-gray-300 text-sm">
               Live chat: <span className="text-orange">(Coming Soon)</span>
             </p>
-            <a
-              href="/tips#faq"
+            <Link
+              to="/tips#faq"
               className="text-orange hover:text-pink transition-colors text-sm font-semibold inline-block mt-2"
             >
               View FAQ →
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -87,19 +89,42 @@ export const Footer: React.FC = () => {
         <div>
           <h4 className="text-xl font-bold mb-4 text-white">Quick Links</h4>
           <ul className="space-y-2">
-            {QUICK_LINKS.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="text-gray-300 hover:text-orange transition-colors text-sm inline-flex items-center group"
-                  aria-label={link.name}
-                >
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    {link.name}
-                  </span>
-                </a>
-              </li>
-            ))}
+            {QUICK_LINKS.map((link) => {
+              const isInternal = link.href.startsWith("/");
+              // Only treat as internal if not a hash link
+              const isHash = link.href.includes("#");
+              if (isInternal && !isHash && !link.href.startsWith("http")) {
+                return (
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
+                      className="text-gray-300 hover:text-orange transition-colors text-sm inline-flex items-center group"
+                      aria-label={link.name}
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform">
+                        {link.name}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-gray-300 hover:text-orange transition-colors text-sm inline-flex items-center group"
+                      aria-label={link.name}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform">
+                        {link.name}
+                      </span>
+                    </a>
+                  </li>
+                );
+              }
+            })}
           </ul>
         </div>
 
@@ -115,6 +140,8 @@ export const Footer: React.FC = () => {
                   href={link.href}
                   className="text-gray-300 hover:text-orange transition-colors text-sm inline-flex items-center group"
                   aria-label={link.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className="group-hover:translate-x-1 transition-transform">
                     {link.name}

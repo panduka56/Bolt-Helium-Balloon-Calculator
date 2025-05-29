@@ -202,7 +202,6 @@ const DeliveryPage = () => {
         <div className="space-y-3">
           {DeliveryFAQ.map((faq, i) => (
             <div key={i} className="border rounded-xl bg-white shadow-sm">
-              {}
               <button
                 className="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-dark focus:outline-none focus:ring-2 focus:ring-orange rounded-xl"
                 onClick={() => setFaqOpen(faqOpen === i ? null : i)}
@@ -304,7 +303,6 @@ const TipsPage = () => {
         <div className="space-y-3">
           {TipsFAQ.map((faq, i) => (
             <div key={i} className="border rounded-xl bg-white shadow-sm">
-              {}
               <button
                 className="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-dark focus:outline-none focus:ring-2 focus:ring-orange rounded-xl"
                 onClick={() => setFaqOpen(faqOpen === i ? null : i)}

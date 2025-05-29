@@ -23,11 +23,7 @@ const NAV_LINKS = [
     description: "UK-wide delivery options",
   },
   { name: "Help & Tips", to: "/tips", description: "Expert helium guidance" },
-  {
-    name: "Contact",
-    to: "/contact",
-    description: "Get in touch with our team",
-  },
+  { name: "Contact", to: "/contact", description: "Get in touch with our team" },
 ];
 
 const TRUST_INDICATORS = [
@@ -182,7 +178,7 @@ export const Header: React.FC = () => {
                 <button
                   className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors min-w-[44px]"
                   aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                  aria-expanded={mobileOpen ? "true" : "false"}
+                  aria-expanded="false"
                   onClick={handleMobileToggle}
                 >
                   {mobileOpen ? (
