@@ -1,0 +1,8 @@
+/* TEAM */
+Developer: Panduka (helium4u.co.uk)
+Company: Bottle Gases Ltd
+Contact: sales@adamsgas.co.uk
+
+/* SITE */
+Last update: 2024-06-09
+Standards: HTML5, CSS3, React, Vite 
