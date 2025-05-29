@@ -1,5 +1,5 @@
 import { BalloonSet, CylinderType } from "../types";
-import { cylinderTypes, CUBIC_FEET_TO_LITERS } from "./constants";
+import { cylinderTypes } from "./constants";
 
 export const calculateTotalHelium = (balloonSets: BalloonSet[]) => {
   const totalCubicFeet = balloonSets.reduce((total, set) => {
@@ -12,8 +12,12 @@ export const calculateTotalHelium = (balloonSets: BalloonSet[]) => {
   // Add a small buffer for wastage (5%)
   const withBuffer = totalCubicFeet * 1.05;
 
-  const liters = withBuffer * CUBIC_FEET_TO_LITERS;
-  const cubicMeters = withBuffer * 0.0283168;
+  // Correct conversions
+  // 1 ft³ = 28.3168 liters
+  // 1 m³ = 35.3147 ft³
+  // 1 m³ = 1000 liters
+  const liters = withBuffer * 28.3168;
+  const cubicMeters = withBuffer / 35.3147;
 
   return {
     cubicFeet: withBuffer,
