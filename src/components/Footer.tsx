@@ -1,19 +1,31 @@
 import React from "react";
 
 const QUICK_LINKS = [
-  { name: "Helium Calculator", href: "#" },
-  { name: "Helium Products", href: "#" },
-  { name: "Delivery Information", href: "#" },
-  { name: "Balloon Tips & Guides", href: "#" },
-  { name: "Safety Information", href: "#" },
-  { name: "Terms & Conditions", href: "#" },
+  { name: "Helium Calculator", href: "/" },
+  { name: "Helium Products", href: "/products" },
+  { name: "Delivery Information", href: "/delivery" },
+  { name: "Balloon Tips & Guides", href: "/tips" },
+  { name: "Safety Information", href: "/tips#safety" },
+  {
+    name: "Terms & Conditions",
+    href: "https://www.bottlegases.co.uk/terms-and-conditions/",
+  },
 ];
 
 const OTHER_GAS = [
-  { name: "CO2 for Home Bars", href: "#" },
-  { name: "Welding Gases", href: "#" },
-  { name: "LPG & Camping Gas", href: "#" },
-  { name: "All Gas Products", href: "#" },
+  {
+    name: "CO2 for Home Bars",
+    href: "https://www.bottlegases.co.uk/product-category/co2-home-bar/",
+  },
+  {
+    name: "Welding Gases",
+    href: "https://www.bottlegases.co.uk/product-category/welding-gas/",
+  },
+  {
+    name: "LPG & Camping Gas",
+    href: "https://www.bottlegases.co.uk/product-category/lpg-camping-gas/",
+  },
+  { name: "All Gas Products", href: "https://www.bottlegases.co.uk/shop/" },
 ];
 
 export const Footer: React.FC = () => {
@@ -63,7 +75,7 @@ export const Footer: React.FC = () => {
               Live chat: <span className="text-orange">(Coming Soon)</span>
             </p>
             <a
-              href="#"
+              href="/tips#faq"
               className="text-orange hover:text-pink transition-colors text-sm font-semibold inline-block mt-2"
             >
               View FAQ →

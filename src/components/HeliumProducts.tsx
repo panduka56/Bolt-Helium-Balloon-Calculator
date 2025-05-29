@@ -29,28 +29,28 @@ const PRODUCTS = [
     capacity: "0.42 m³ (2L) – Fills up to 32 balloons",
     price: "£87.77",
     url: "https://www.bottlegases.co.uk/product/2l-refillable-helium-tank/",
-    img: "https://www.bottlegases.co.uk/wp-content/uploads/2024/11/2L-helium-tank.png",
+    img: "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png",
   },
   {
     name: "9.4 Litre Refillable Helium Tank",
     capacity: "1.2 m³ (9.4L) – Fills up to 150 balloons",
     price: "£253.76",
     url: "https://www.bottlegases.co.uk/product/9-4l-refillable-helium-tank/",
-    img: "https://www.bottlegases.co.uk/wp-content/uploads/2024/11/9.4L-helium-tank.png",
+    img: "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png",
   },
   {
     name: "20 Litre Refillable Helium Tank",
     capacity: "4 m³ (20L) – Fills up to 320 balloons",
     price: "£453.70",
     url: "https://www.bottlegases.co.uk/product/20l-refillable-helium-tank/",
-    img: "https://www.bottlegases.co.uk/wp-content/uploads/2024/11/20L-helium-tank.png",
+    img: "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png",
   },
   {
     name: "50L Refillable Helium Gas Cylinder: Trade Only",
     capacity: "10 m³ (50L) – Fills up to 800 balloons",
     price: "£655.04",
     url: "https://www.adamsgas.co.uk/product/50l-refillable-helium-gas-cylinder-trade-only/",
-    img: "https://www.adamsgas.co.uk/wp-content/uploads/2024/11/50L-helium-tank.png",
+    img: "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png",
   },
   // Inflators
   {
