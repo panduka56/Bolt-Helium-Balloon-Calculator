@@ -102,7 +102,27 @@
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Product",
-                    "name": "Helium Balloon Gas Cylinders"
+                    "name": "Helium Balloon Gas Cylinders",
+                    "description": "Professional helium gas cylinders for balloon inflation. Available in disposable and refillable options.",
+                    "image": [
+                      "https://www.bottlegases.co.uk/wp-content/uploads/2025/02/Helium-Balloon-Gas-0.95L-for-Partys-Ballon-arches-Helium-needs-scaled.jpg"
+                    ],
+                    "brand": {
+                      "@type": "Brand", 
+                      "name": "Adams Gas"
+                    },
+                    "offers": {
+                      "@type": "AggregateOffer",
+                      "priceCurrency": "GBP",
+                      "lowPrice": "17.99",
+                      "highPrice": "624.05",
+                      "offerCount": "8",
+                      "availability": "https://schema.org/InStock",
+                      "seller": {
+                        "@type": "Organization",
+                        "name": "Bottle Gases Ltd"
+                      }
+                    }
                   }
                 }
               ]
@@ -329,41 +349,263 @@
             "@id": "https://helium4u.co.uk/#products",
             "name": "Helium Gas Cylinders",
             "description": "Complete range of disposable and refillable helium cylinders for balloon inflation",
+            "brand": {
+              "@type": "Brand",
+              "name": "Adams Gas"
+            },
             "hasVariant": [
               {
                 "@type": "Product",
+                "@id": "https://helium4u.co.uk/#product-small-disposable",
                 "name": "Small Disposable Helium Cylinder",
                 "description": "0.14 m³ capacity, fills 30 x 9-inch balloons",
+                "image": [
+                  "https://www.bottlegases.co.uk/wp-content/uploads/2025/02/Helium-Balloon-Gas-0.95L-for-Partys-Ballon-arches-Helium-needs-scaled.jpg"
+                ],
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Adams Gas"
+                },
+                "sku": "disp095heliumba",
                 "offers": {
                   "@type": "Offer",
+                  "url": "https://www.bottlegases.co.uk/product/small-disposable-helium-gas-bottle-for-10-balloons",
                   "price": "17.99",
                   "priceCurrency": "GBP",
-                  "availability": "InStock"
+                  "availability": "https://schema.org/InStock",
+                  "priceValidUntil": "2025-12-31",
+                  "seller": {
+                    "@type": "Organization",
+                    "name": "Bottle Gases Ltd"
+                  },
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "0",
+                      "currency": "GBP"
+                    },
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "GB"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 1,
+                        "unitCode": "DAY"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "DAY"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "GB",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 14,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
                 }
               },
               {
                 "@type": "Product",
+                "@id": "https://helium4u.co.uk/#product-large-disposable",
                 "name": "Large Disposable Helium Cylinder",
                 "description": "0.33 m³ capacity, fills 40 x 9-inch balloons",
+                "image": [
+                  "https://www.bottlegases.co.uk/wp-content/uploads/2024/12/20241105_103530-scaled.jpg"
+                ],
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Adams Gas"
+                },
+                "sku": "DISPHELIUM33BAL",
                 "offers": {
                   "@type": "Offer",
+                  "url": "https://www.bottlegases.co.uk/product/large-disposable-helium-gas-cylinder-for-40-balloons",
                   "price": "39.50",
                   "priceCurrency": "GBP",
-                  "availability": "InStock"
+                  "availability": "https://schema.org/InStock",
+                  "priceValidUntil": "2025-12-31",
+                  "seller": {
+                    "@type": "Organization",
+                    "name": "Bottle Gases Ltd"
+                  },
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "0",
+                      "currency": "GBP"
+                    },
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "GB"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 1,
+                        "unitCode": "DAY"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "DAY"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "GB",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 14,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
                 }
               },
               {
                 "@type": "Product",
+                "@id": "https://helium4u.co.uk/#product-20l-refillable",
                 "name": "20L Refillable Helium Cylinder",
                 "description": "4 m³ capacity, fills 400 x 9-inch balloons",
+                "image": [
+                  "https://www.bottlegases.co.uk/wp-content/uploads/2020/03/20l-helium.png"
+                ],
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Adams Gas"
+                },
+                "sku": "ADAMS20LHELIU",
                 "offers": {
                   "@type": "Offer",
+                  "url": "https://www.bottlegases.co.uk/product/20l-refillable-helium-tank/",
                   "price": "373.70",
                   "priceCurrency": "GBP",
-                  "availability": "InStock"
+                  "availability": "https://schema.org/InStock",
+                  "priceValidUntil": "2025-12-31",
+                  "seller": {
+                    "@type": "Organization",
+                    "name": "Bottle Gases Ltd"
+                  },
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "0",
+                      "currency": "GBP"
+                    },
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "GB"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 1,
+                        "unitCode": "DAY"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "DAY"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "GB",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 14,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
+                }
+              },
+              {
+                "@type": "Product",
+                "@id": "https://helium4u.co.uk/#product-medium-disposable",
+                "name": "Medium Disposable Helium Cylinder",
+                "description": "0.22 m³ capacity, fills 25 x 9-inch balloons",
+                "image": [
+                  "https://www.bottlegases.co.uk/wp-content/uploads/2023/11/Balloon-Gas-Large-scaled.jpg"
+                ],
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Adams Gas"
+                },
+                "sku": "DISP22HELIUMBAL",
+                "offers": {
+                  "@type": "Offer",
+                  "url": "https://www.bottlegases.co.uk/product/small-helium-tank-25-balloons",
+                  "price": "34.99",
+                  "priceCurrency": "GBP",
+                  "availability": "https://schema.org/InStock",
+                  "priceValidUntil": "2025-12-31",
+                  "seller": {
+                    "@type": "Organization",
+                    "name": "Bottle Gases Ltd"
+                  },
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                      "@type": "MonetaryAmount",
+                      "value": "0",
+                      "currency": "GBP"
+                    },
+                    "shippingDestination": {
+                      "@type": "DefinedRegion",
+                      "addressCountry": "GB"
+                    },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 1,
+                        "unitCode": "DAY"
+                      },
+                      "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "DAY"
+                      }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "GB",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 14,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn"
+                  }
                 }
               }
-            ]
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "15000",
+              "bestRating": "5",
+              "worstRating": "1"
+            }
           }
         ]
       }
