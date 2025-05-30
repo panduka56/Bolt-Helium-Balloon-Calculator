@@ -1,5 +1,6 @@
 import React from "react";
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface CalculationResultsProps {
   totalHelium: {
@@ -141,6 +142,11 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
             <div className="mt-6 p-4 bg-pink rounded-xl border border-pink-200 text-sm text-dark text-center">
               These are our suggestions. For the most up-to-date product info and prices, please visit the supplier's website.
             </div>
+            <div className="mt-4 flex flex-wrap justify-center gap-4 text-sm">
+              <Link to="/products" className="text-orange underline hover:text-pink font-semibold">View All Helium Gas Cylinder Sizes</Link>
+              <Link to="/delivery" className="text-orange underline hover:text-pink font-semibold">Check Helium Delivery Options</Link>
+              <Link to="/tips" className="text-orange underline hover:text-pink font-semibold">Helium Balloon Tips & FAQs</Link>
+            </div>
           </div>
         )}
       </div>
@@ -231,6 +237,11 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({
             </div>
             <div className="mt-6 p-4 bg-pink rounded-xl border border-pink-200 text-sm text-dark text-center">
               These are our suggestions. For the most up-to-date product info and prices, please visit the supplier's website.
+            </div>
+            <div className="mt-4 flex flex-wrap justify-center gap-4 text-sm">
+              <Link to="/products" className="text-orange underline hover:text-pink font-semibold">View All Helium Gas Cylinder Sizes</Link>
+              <Link to="/delivery" className="text-orange underline hover:text-pink font-semibold">Check Helium Delivery Options</Link>
+              <Link to="/tips" className="text-orange underline hover:text-pink font-semibold">Helium Balloon Tips & FAQs</Link>
             </div>
           </div>
         )}

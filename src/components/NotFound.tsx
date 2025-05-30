@@ -18,7 +18,7 @@ const NotFound: React.FC = () => (
         <input type="text" placeholder="Search..." className="input-primary w-2/3 max-w-xs mr-2" />
         <button type="submit" className="btn-primary px-4 py-2">Search</button>
       </form>
-      <div className="text-xs text-gray-400">If you believe this is an error, please <a href="/contact" className="underline text-orange">contact us</a>.</div>
+      <div className="text-xs text-gray-400">If you believe this is an error, please <Link to="/contact" className="underline text-orange">contact us</Link>.</div>
     </div>
   </main>
 );

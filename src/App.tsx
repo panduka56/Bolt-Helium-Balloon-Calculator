@@ -5,7 +5,6 @@ import { Footer } from "./components/Footer";
 import {
   ChevronRight,
   Home,
-  Truck,
   Package,
   HelpCircle,
   MapPin,
@@ -71,19 +70,29 @@ const Breadcrumbs: React.FC = () => (
 
 const DeliveryFAQ = [
   {
-    question: "How do I check if Adams Gas delivers to my area?",
+    question: "How do I calculate helium cylinder delivery costs?",
     answer:
-      "Use the postcode checker below or contact Adams Gas directly for confirmation.",
+      "Delivery costs vary based on cylinder size and location. For small disposable helium cylinders under 25kg, we use courier services with fixed rates. Larger refillable gas cylinders require specialized delivery vehicles, which may increase costs. Use our helium calculator to determine cylinder needs, then check delivery options at checkout.",
   },
   {
-    question: "How long does delivery take?",
+    question: "What's the gas capacity of cylinders available for delivery?",
     answer:
-      "Calor Gas: 2-3 working days (may be longer in peak times). BOC: Next working day if ordered by 3pm. Adams Gas: Varies by area, see delivery days.",
+      "Our helium cylinders range from 0.14 cubic meters (small disposable) to 10 cubic meters (large refillable). Each cylinder clearly shows its gas capacity and balloon filling capability. The helium balloon calculator helps match the right cylinder size to your needs, ensuring you order the correct gas capacity for your event.",
   },
   {
-    question: "How do I return empty bottles?",
+    question: "How long does helium gas cylinder delivery take?",
     answer:
-      "Return to your local Calor Center, BOC depot, or Adams Gas as per your supplier's instructions.",
+      "Adams Gas delivers on set days by postcode area. Most Kent and London areas receive delivery within 2-3 working days. For urgent balloon events, small disposable cylinders can be couriered next day. Check our delivery schedule or use the postcode checker to calculate your delivery timeframe.",
+  },
+  {
+    question: "Can I return empty helium cylinders after my balloon event?",
+    answer:
+      "Disposable helium cylinders should be recycled locally after use - they cannot be returned. Refillable gas cylinders must be returned to claim your deposit refund. The cost structure reflects this: disposables have no deposit but higher per-balloon costs, while refillables require deposits but offer better value.",
+  },
+  {
+    question: "Do you deliver helium for commercial balloon businesses?",
+    answer:
+      "Yes, we specialize in helium gas delivery for both personal and commercial use. Business customers benefit from our larger refillable cylinders with superior gas capacity. Use our helium calculator to estimate monthly usage, then contact us for commercial rates and regular delivery schedules.",
   },
 ];
 
@@ -115,34 +124,14 @@ const DeliveryPage = () => {
   return (
     <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-8">
       <h1 className="text-3xl font-bold mb-8">Delivery Information</h1>
-      <div className="grid md:grid-cols-3 gap-6 mb-10">
-        <div className="card flex flex-col items-center text-center">
-          <Truck className="h-10 w-10 text-orange mb-2" />
-          <h2 className="text-xl font-semibold mb-2">Calor Gas</h2>
-          <ul className="text-gray-700 text-sm space-y-1 mb-2">
-            <li>Order online or via local Calor Centers</li>
-            <li>2-3 working days (may be longer in peak)</li>
-            <li>Return empties to Calor Centers</li>
-          </ul>
-        </div>
-        <div className="card flex flex-col items-center text-center">
-          <Package className="h-10 w-10 text-orange mb-2" />
-          <h2 className="text-xl font-semibold mb-2">BOC Gases</h2>
-          <ul className="text-gray-700 text-sm space-y-1 mb-2">
-            <li>Nationwide, next working day if ordered by 3pm</li>
-            <li>Flat delivery rate</li>
-            <li>Order online or by phone</li>
-          </ul>
-        </div>
+      <div className="grid md:grid-cols-1 gap-6 mb-10">
         <div className="card flex flex-col items-center text-center">
           <MapPin className="h-10 w-10 text-orange mb-2" />
           <h2 className="text-xl font-semibold mb-2">Adams Gas</h2>
           <ul className="text-gray-700 text-sm space-y-1 mb-2">
             <li>Delivers in Kent, London, East Sussex</li>
             <li>Set delivery days by postcode</li>
-            <li>
-              Courier for <span className="font-semibold">under 25kg</span>
-            </li>
+            <li>Courier for <span className="font-semibold">under 25kg</span></li>
           </ul>
         </div>
       </div>
@@ -228,19 +217,44 @@ const DeliveryPage = () => {
 
 const TipsFAQ = [
   {
-    question: "How do I make my balloons float longer?",
+    question: "How do I calculate the right amount of helium for my balloons?",
     answer:
-      "Use Hi-Float or similar treatments, and inflate balloons as close to your event as possible.",
+      "Use our free helium balloon calculator - simply select balloon type (latex or foil), size, and quantity. The calculator instantly shows total helium needed in cubic meters and recommends cost-effective cylinder options. For mixed balloon sizes, add each type separately for accurate calculations.",
   },
   {
-    question: "Is it safe to inhale helium?",
+    question: "What affects the cost of helium per balloon?",
     answer:
-      "No! Inhaling helium is dangerous and can be fatal. Never inhale helium.",
+      "Helium cost per balloon depends on cylinder size and type. Larger cylinders offer lower per-balloon costs due to better gas capacity utilization. Our calculator shows exact costs for different cylinder options. Small disposables cost about £1 per balloon, while large refillables can reduce this to £0.50-0.80 per balloon.",
   },
   {
-    question: "What should I do with empty cylinders?",
+    question: "How much helium does each balloon size need?",
     answer:
-      "Return them to your supplier or follow the instructions provided with your order.",
+      "Standard 9-inch latex balloons need 0.25 cubic feet of helium. Larger sizes need more: 11-inch requires 0.5 cubic feet, 16-inch needs 1.5 cubic feet. Foil balloons vary by shape but typically use less gas than latex of the same width. Our helium calculator automatically applies the correct consumption rates.",
+  },
+  {
+    question: "How do I maximize balloon float time with helium?",
+    answer:
+      "Inflate balloons as close to your event as possible, as latex balloons float 8-12 hours. Use Hi-Float treatment to extend float time up to 48 hours. Keep filled balloons in cool areas away from direct sunlight. Foil balloons naturally float longer - often several days or weeks.",
+  },
+  {
+    question: "What's the difference in gas capacity between cylinder sizes?",
+    answer:
+      "Small disposable cylinders contain 0.14-0.33 cubic meters, filling 30-40 balloons. Medium refillables offer 0.42-1.2 cubic meters for 50-215 balloons. Large refillables provide 4-10 cubic meters, filling 400-1000 balloons. Check our helium gas capacity chart for detailed specifications.",
+  },
+  {
+    question: "Is it safe to inhale helium from balloons?",
+    answer:
+      "No! Never inhale helium - it displaces oxygen and can cause suffocation, even death. This is especially dangerous for children. Always supervise balloon inflation and disposal. Our helium cylinders include safety warnings and proper usage instructions for balloon filling only.",
+  },
+  {
+    question: "How accurate is the helium balloon calculator?",
+    answer:
+      "Our calculator provides industry-standard accuracy with a 5% safety margin for wastage. Calculations are based on manufacturer specifications and real-world testing. The tool accounts for different balloon materials and sizes, ensuring reliable estimates for planning your helium gas needs.",
+  },
+  {
+    question: "Can I mix different balloon types in the calculator?",
+    answer:
+      "Yes! Add multiple balloon sets with different types and sizes. The calculator sums total helium requirements and recommends appropriate cylinders for the combined needs. This helps plan diverse balloon decorations while optimizing gas cylinder selection and costs.",
   },
 ];
 

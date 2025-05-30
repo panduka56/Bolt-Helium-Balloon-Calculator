@@ -153,23 +153,214 @@
             ]
           },
           {
+            "@type": "HowTo",
+            "@id": "https://helium4u.co.uk/#howto",
+            "name": "How to Calculate Helium for Balloons",
+            "description": "Step-by-step guide to calculate exact helium requirements for latex and foil balloons",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Select balloon type",
+                "text": "Choose between latex or foil balloons from the dropdown menu"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Choose balloon size",
+                "text": "Select your balloon size (9-inch, 11-inch, 16-inch for latex; various sizes for foil)"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "Enter quantity",
+                "text": "Input the number of balloons you need to fill"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": "View results",
+                "text": "See total helium needed in cubic meters and recommended cylinders"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 5,
+                "name": "Order cylinders",
+                "text": "Click 'Buy Now' on recommended cylinders to order from supplier"
+              }
+            ],
+            "totalTime": "PT2M",
+            "tool": {
+              "@type": "HowToTool",
+              "name": "Helium Balloon Calculator"
+            },
+            "supply": [
+              {
+                "@type": "HowToSupply",
+                "name": "Balloon specifications (type, size, quantity)"
+              }
+            ]
+          },
+          {
             "@type": "FAQPage",
             "@id": "https://helium4u.co.uk/#faq",
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "How do I calculate how much helium I need?",
+                "name": "How much helium do I need for my balloons?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Use our free Helium4U calculator. Simply enter your balloon sizes and quantities, and we'll calculate exactly how much helium you need in cubic feet and recommend the right cylinder sizes."
+                  "text": "The amount of helium needed depends on balloon size, type (latex or foil), and quantity. Standard 9-inch latex balloons need 0.25 cubic feet each, 11-inch need 0.5 cubic feet. Use our calculator for exact requirements with a 5% safety margin included."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Do you deliver helium cylinders across the UK?",
+                "name": "What size helium tank do I need to fill 100 balloons?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes, we provide next-day delivery across the UK for helium cylinders. Order by 2PM for next working day delivery."
+                  "text": "For 100 standard 9-inch latex balloons, you need approximately 25 cubic feet (0.71 m³) of helium. Best options: 3 × Large Disposable cylinders (0.33 m³ each) or 1 × 20L refillable cylinder (4 m³)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What's the cost of helium per balloon?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cost per balloon varies by cylinder size. Small disposables cost about £1 per balloon, while large refillables reduce this to £0.50-0.80 per balloon. Larger cylinders offer better value due to improved gas capacity utilization."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long do helium balloons float?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Latex balloons float 8-12 hours, foil balloons last days or weeks. Use Hi-Float treatment to extend latex float time to 24-48 hours. Always inflate close to event time for best results."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How accurate is the helium calculator?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our calculator provides industry-standard accuracy with a 5% safety margin for wastage. Calculations are based on manufacturer specifications and real-world testing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I calculate helium for both latex and foil balloons?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes! Add multiple balloon sets with different types and sizes. The calculator sums total helium requirements and recommends appropriate cylinders for combined needs."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What's the difference between disposable and refillable cylinders?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Disposable cylinders (0.14-0.33 m³) require no deposit and suit one-time events. Refillable cylinders (0.42-10 m³) require a refundable deposit but offer better value for regular use with lower per-balloon costs."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "Dataset",
+            "@id": "https://helium4u.co.uk/#capacity-chart",
+            "name": "Helium Gas Cylinder Capacity Chart",
+            "description": "Comprehensive data on helium cylinder sizes, capacities, and balloon filling capabilities",
+            "keywords": "helium capacity, balloon gas chart, cylinder sizes",
+            "distribution": {
+              "@type": "DataDownload",
+              "encodingFormat": "application/json",
+              "contentUrl": "https://helium4u.co.uk/api/capacity-chart.json"
+            },
+            "variableMeasured": [
+              {
+                "@type": "PropertyValue",
+                "name": "Cylinder Size",
+                "unitText": "Liters"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Gas Capacity",
+                "unitText": "Cubic Meters"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Balloon Capacity",
+                "unitText": "9-inch balloons"
+              }
+            ]
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://helium4u.co.uk/#balloon-sizes",
+            "name": "Balloon Helium Requirements",
+            "description": "Helium consumption by balloon size and type",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "9-inch Latex Balloon",
+                "description": "0.25 cubic feet (0.007 m³) helium required"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "11-inch Latex Balloon",
+                "description": "0.5 cubic feet (0.014 m³) helium required"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "16-inch Latex Balloon",
+                "description": "1.5 cubic feet (0.042 m³) helium required"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "18-inch Foil Balloon",
+                "description": "0.5 cubic feet (0.014 m³) helium required"
+              }
+            ]
+          },
+          {
+            "@type": "ProductGroup",
+            "@id": "https://helium4u.co.uk/#products",
+            "name": "Helium Gas Cylinders",
+            "description": "Complete range of disposable and refillable helium cylinders for balloon inflation",
+            "hasVariant": [
+              {
+                "@type": "Product",
+                "name": "Small Disposable Helium Cylinder",
+                "description": "0.14 m³ capacity, fills 30 x 9-inch balloons",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "17.99",
+                  "priceCurrency": "GBP",
+                  "availability": "InStock"
+                }
+              },
+              {
+                "@type": "Product",
+                "name": "Large Disposable Helium Cylinder",
+                "description": "0.33 m³ capacity, fills 40 x 9-inch balloons",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "39.50",
+                  "priceCurrency": "GBP",
+                  "availability": "InStock"
+                }
+              },
+              {
+                "@type": "Product",
+                "name": "20L Refillable Helium Cylinder",
+                "description": "4 m³ capacity, fills 400 x 9-inch balloons",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "373.70",
+                  "priceCurrency": "GBP",
+                  "availability": "InStock"
                 }
               }
             ]
